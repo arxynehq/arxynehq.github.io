@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arxyne — Demo</title>
+<meta name="description" content="Arxyne platform demo: agentic engineering on OpenUSD digital twins.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L2KSD72508"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L2KSD72508');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0A0A0A;
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  .logo { width: 280px; height: auto; margin-bottom: 1.5rem; }
+  h1 {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #00E5FF;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+  }
+  .player {
+    width: 100%;
+    max-width: 960px;
+    margin-bottom: 2rem;
+  }
+  .player video {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #222;
+  }
+  .back a {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .back a:hover { color: #00E5FF; }
+</style>
+</head>
+<body>
+  <img src="https://raw.githubusercontent.com/arxynehq/.github/main/profile/assets/logo.png" alt="Arxyne" class="logo">
+  <h1>Platform Demo</h1>
+  <div class="player">
+    <video controls autoplay muted playsinline preload="auto">
+      <source src="demo.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="back"><a href="/">← arxyne.com</a></div>
+</body>
+</html>
