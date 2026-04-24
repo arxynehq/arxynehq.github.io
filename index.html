@@ -4,7 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arxyne — The AI Harness for Cyber-Physical Products</title>
-<meta name="description" content="Arxyne builds AI infrastructure for cyber-physical products.">
+<meta name="description" content="Arxyne unifies simulation, design, and compliance into a single USD-native platform for cyber-physical product development.">
+<meta property="og:title" content="Arxyne — The AI Harness for Cyber-Physical Products">
+<meta property="og:description" content="AI-orchestrated simulation, design, and compliance for automotive and aerospace engineering.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arxyne.com">
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-L2KSD72508"></script>
 <script>
@@ -14,60 +18,317 @@
   gtag('config', 'G-L2KSD72508');
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
   body {
     background: #0A0A0A;
     color: #FFFFFF;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Hero ── */
+  .hero {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 4rem 1.5rem;
     text-align: center;
+    padding: 6rem 1.5rem 4rem;
+    min-height: 70vh;
   }
-  .logo { width: 440px; height: auto; margin-bottom: 2rem; }
-  h1 {
-    font-weight: 800;
-    font-size: clamp(1.5rem, 4vw, 2.4rem);
+
+  .logo { width: 400px; max-width: 80vw; height: auto; margin-bottom: 2rem; }
+
+  .hero-sub {
+    color: #999;
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-primary {
+    background: #00E5FF;
+    color: #0A0A0A;
+  }
+  .btn-primary:hover {
+    background: #00c8e0;
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background: transparent;
     color: #00E5FF;
-    margin-bottom: 1.5rem;
+    border: 1px solid #00E5FF;
+  }
+  .btn-secondary:hover {
+    background: rgba(0, 229, 255, 0.1);
+    transform: translateY(-1px);
+  }
+
+  /* ── Section base ── */
+  section {
+    padding: 5rem 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-weight: 800;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    color: #00E5FF;
+    margin-bottom: 3rem;
+    text-align: center;
     letter-spacing: -0.02em;
   }
-  .desc {
-    color: #999;
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
+
+  /* ── Capabilities cards ── */
+  .capabilities {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card {
+    background: #111;
+    border: 1px solid #1a1a1a;
+    border-radius: 10px;
+    padding: 2rem 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .card:hover {
+    border-color: #00E5FF;
+  }
+
+  .card-icon {
+    font-size: 1.6rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .card h3 {
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 0.6rem;
+    color: #fff;
+  }
+
+  .card p {
+    color: #888;
+    font-size: 0.9rem;
     line-height: 1.6;
-    max-width: 520px;
-    margin-bottom: 3rem;
   }
-  .arch {
+
+  /* ── Architecture ── */
+  .arch-wrap {
+    text-align: center;
+  }
+
+  .arch-wrap img {
     width: 100%;
-    max-width: 700px;
-    margin-bottom: 3rem;
+    max-width: 750px;
+    height: auto;
   }
-  .arch img { width: 100%; height: auto; }
-  .contact a {
-    color: #666;
+
+  /* ── Tech strip ── */
+  .tech-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    padding: 3rem 1.5rem;
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .tech-label {
+    color: #555;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .tech-logo {
+    height: 28px;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    filter: grayscale(100%) brightness(2);
+  }
+  .tech-logo:hover {
+    opacity: 1;
+    filter: none;
+  }
+
+  /* ── Contact ── */
+  .contact-section {
+    text-align: center;
+    padding: 5rem 1.5rem 6rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .contact-section h2 {
+    font-weight: 800;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    color: #00E5FF;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .contact-section p {
+    color: #888;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .contact-links a {
+    color: #ccc;
     text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
+    font-size: 0.9rem;
     transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
   }
-  .contact a:hover { color: #00E5FF; }
+  .contact-links a:hover { color: #00E5FF; }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-top: 1px solid #111;
+  }
+
+  footer p {
+    color: #333;
+    font-size: 0.75rem;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 600px) {
+    .hero { padding: 4rem 1.5rem 3rem; min-height: 60vh; }
+    .logo { width: 280px; }
+    section { padding: 3rem 1.5rem; }
+    .tech-strip { gap: 2rem; }
+    .tech-logo { height: 22px; }
+  }
 </style>
 </head>
 <body>
-  <img src="https://raw.githubusercontent.com/arxynehq/.github/main/profile/assets/logo.png" alt="Arxyne" class="logo">
-  <h1>The AI Harness for Cyber-Physical Products</h1>
-  <p class="desc">Arxyne makes AI safe and useful for engineering. Embedded in real workflows, governed by provenance, validated by physics — from design intent to trusted performance.</p>
-  <div class="arch">
-    <img src="https://raw.githubusercontent.com/arxynehq/.github/main/profile/assets/architecture.svg" alt="Arxyne Architecture">
+
+  <!-- Hero -->
+  <div class="hero">
+    <img src="https://raw.githubusercontent.com/arxynehq/.github/main/profile/assets/logo.png" alt="Arxyne" class="logo">
+    <p class="hero-sub">Arxyne unifies simulation, design, and compliance into a single USD-native platform — taking engineers from requirements to validated digital twins in one pipeline.</p>
+    <div class="hero-actions">
+      <a href="/demo/" class="btn btn-primary">See the demo</a>
+      <a href="mailto:chris@arxyne.com" class="btn btn-secondary">Get in touch</a>
+    </div>
   </div>
-  <div class="contact"><a href="mailto:chris@arxyne.com">chris@arxyne.com</a></div>
+
+  <!-- Capabilities -->
+  <section>
+    <h2 class="section-title">What Arxyne does</h2>
+    <div class="capabilities">
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Multi-physics orchestration</h3>
+        <p>Product-aware AI orchestration across CFD, FEA, and MBD — from a single command. No manual solver wrangling.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔗</div>
+        <h3>Unified part &amp; change management</h3>
+        <p>Every part — physical and software — tracked with full revision lineage, provenance, and dependency tracing through simulation results.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <h3>Compliance as a KPI</h3>
+        <p>Making simulation trustworthy enough to certify. Process governance, validation evidence, and audit trails built into every run.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📐</div>
+        <h3>Deploys anywhere, any scale</h3>
+        <p>From a single workstation to cloud-scale HPC clusters. GPU-accelerated solvers with surrogate generation from accumulated simulation data.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section>
+    <h2 class="section-title">Architecture</h2>
+    <div class="arch-wrap">
+      <img src="https://raw.githubusercontent.com/arxynehq/.github/main/profile/assets/architecture.svg" alt="Arxyne Architecture">
+    </div>
+  </section>
+
+  <!-- Tech strip -->
+  <div class="tech-strip">
+    <span class="tech-label">Built with</span>
+    <!-- NVIDIA Omniverse -->
+    <svg class="tech-logo" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="22" fill="#76B900" font-family="Inter, sans-serif" font-weight="800" font-size="16">NVIDIA</text>
+    </svg>
+    <!-- OpenUSD -->
+    <svg class="tech-logo" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="22" fill="#00A4EF" font-family="Inter, sans-serif" font-weight="800" font-size="16">OpenUSD</text>
+    </svg>
+    <!-- OpenFOAM -->
+    <svg class="tech-logo" viewBox="0 0 140 30" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="22" fill="#1E88E5" font-family="Inter, sans-serif" font-weight="800" font-size="16">OpenFOAM</text>
+    </svg>
+  </div>
+
+  <!-- Contact -->
+  <div class="contact-section">
+    <h2>Get in touch</h2>
+    <p>Arxyne is building the certification layer for simulation. If you're working on the future of engineering, we'd love to hear from you.</p>
+    <div class="contact-links">
+      <a href="mailto:chris@arxyne.com">✉ chris@arxyne.com</a>
+      <a href="https://github.com/arxynehq" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Arxyne Ltd</p>
+  </footer>
+
 </body>
 </html>
