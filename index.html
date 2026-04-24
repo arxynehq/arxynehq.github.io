@@ -38,8 +38,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 6rem 1.5rem 4rem;
-    min-height: 70vh;
+    padding: 4rem 1.5rem 2rem;
   }
 
   .logo { width: 400px; max-width: 80vw; height: auto; margin-bottom: 2rem; }
@@ -92,7 +91,7 @@
 
   /* ── Section base ── */
   section {
-    padding: 5rem 1.5rem;
+    padding: 2.5rem 1.5rem;
     max-width: 1000px;
     margin: 0 auto;
   }
@@ -101,7 +100,7 @@
     font-weight: 800;
     font-size: clamp(1.3rem, 3vw, 1.8rem);
     color: #00E5FF;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     text-align: center;
     letter-spacing: -0.02em;
   }
@@ -194,7 +193,7 @@
   /* ── Contact ── */
   .contact-section {
     text-align: center;
-    padding: 5rem 1.5rem 6rem;
+    padding: 3rem 1.5rem 4rem;
     max-width: 600px;
     margin: 0 auto;
   }
@@ -246,9 +245,9 @@
 
   /* ── Mobile ── */
   @media (max-width: 600px) {
-    .hero { padding: 4rem 1.5rem 3rem; min-height: 60vh; }
+    .hero { padding: 3rem 1.5rem 1.5rem; }
     .logo { width: 280px; }
-    section { padding: 3rem 1.5rem; }
+    section { padding: 2rem 1.5rem; }
     .tech-strip { gap: 2rem; }
     .tech-logo { height: 22px; }
   }
@@ -265,6 +264,13 @@
       <a href="mailto:chris@arxyne.com" class="btn btn-secondary">Get in touch</a>
     </div>
   </div>
+
+  <!-- Architecture -->
+  <section>
+    <div class="arch-wrap">
+      <img src="https://raw.githubusercontent.com/arxynehq/.github/main/profile/assets/architecture.svg" alt="Arxyne Architecture">
+    </div>
+  </section>
 
   <!-- Capabilities -->
   <section>
@@ -290,14 +296,6 @@
         <h3>Deploys anywhere, any scale</h3>
         <p>From a single workstation to cloud-scale HPC clusters. GPU-accelerated solvers with surrogate generation from accumulated simulation data.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Architecture -->
-  <section>
-    <h2 class="section-title">Architecture</h2>
-    <div class="arch-wrap">
-      <img src="https://raw.githubusercontent.com/arxynehq/.github/main/profile/assets/architecture.svg" alt="Arxyne Architecture">
     </div>
   </section>
 
