@@ -178,14 +178,17 @@
   }
 
   .tech-logo {
-    height: 28px;
-    opacity: 0.6;
-    transition: opacity 0.2s;
-    filter: grayscale(100%) brightness(2);
+    height: 32px;
+    opacity: 0.5;
+    transition: opacity 0.25s;
+    filter: brightness(1.8);
   }
   .tech-logo:hover {
     opacity: 1;
-    filter: none;
+    filter: brightness(1);
+  }
+  .tech-logo-nvidia {
+    height: 36px;
   }
 
   /* ── Contact ── */
@@ -301,18 +304,9 @@
   <!-- Tech strip -->
   <div class="tech-strip">
     <span class="tech-label">Built with</span>
-    <!-- NVIDIA Omniverse -->
-    <svg class="tech-logo" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="22" fill="#76B900" font-family="Inter, sans-serif" font-weight="800" font-size="16">NVIDIA</text>
-    </svg>
-    <!-- OpenUSD -->
-    <svg class="tech-logo" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="22" fill="#00A4EF" font-family="Inter, sans-serif" font-weight="800" font-size="16">OpenUSD</text>
-    </svg>
-    <!-- OpenFOAM -->
-    <svg class="tech-logo" viewBox="0 0 140 30" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="22" fill="#1E88E5" font-family="Inter, sans-serif" font-weight="800" font-size="16">OpenFOAM</text>
-    </svg>
+    <img src="assets/logos/nvidia.svg" alt="NVIDIA" class="tech-logo tech-logo-nvidia">
+    <img src="assets/logos/openusd.svg" alt="OpenUSD" class="tech-logo">
+    <img src="assets/logos/openfoam.svg" alt="OpenFOAM" class="tech-logo">
   </div>
 
   <!-- Contact -->
