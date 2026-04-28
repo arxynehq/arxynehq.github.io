@@ -41,7 +41,16 @@
     padding: 4rem 1.5rem 2rem;
   }
 
-  .logo { width: 400px; max-width: 80vw; height: auto; margin-bottom: 2rem; }
+  .logo { width: 400px; max-width: 80vw; height: auto; margin-bottom: 0.75rem; }
+
+  .hero-tagline {
+    font-weight: 600;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: #00E5FF;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
 
   .hero-sub {
     color: #999;
@@ -253,6 +262,7 @@
   <!-- Hero -->
   <div class="hero">
     <img src="https://raw.githubusercontent.com/arxynehq/.github/main/profile/assets/logo.png" alt="Arxyne" class="logo">
+    <p class="hero-tagline">Agentic Engineering</p>
     <p class="hero-sub">Arxyne unifies simulation, design, and compliance into a single USD-native platform — taking engineers from requirements to validated digital twins in one pipeline.</p>
     <div class="hero-actions">
       <a href="/demo/" class="btn btn-primary">See the demo</a>
