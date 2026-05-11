@@ -3,918 +3,148 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arxyne — Try the platform</title>
-<meta name="description" content="Pick a product, set the airflow, get back KPIs and an enriched USD digital twin. Live demo of the Arxyne assessment pipeline.">
-<meta property="og:title" content="Arxyne — Try the platform">
-<meta property="og:description" content="Pick a product, set the airflow, get real aero KPIs back from OpenFOAM or DoMINO surrogate.">
+<meta name="robots" content="noindex, nofollow">
+<title>Arxyne — Try (coming soon)</title>
+<meta name="description" content="The interactive Arxyne platform demo is on its way.">
+<meta property="og:title" content="Arxyne — Try (coming soon)">
+<meta property="og:description" content="The interactive Arxyne platform demo is on its way.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://arxyne.com/try">
+<meta property="og:url" content="https://arxyne.com/try/">
 <!-- Analytics: consent-gated. See /assets/consent.js -->
 <script src="/assets/consent.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     background: #0A0A0A;
     color: #FFFFFF;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  a { color: #00E5FF; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-
-  /* ── Top nav ── */
-  .top-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.25rem 2rem;
-    border-bottom: 1px solid #111;
-  }
-  .top-nav .logo-link {
-    color: #00E5FF;
-    font-weight: 800;
-    font-size: 1.1rem;
-    letter-spacing: 0.02em;
-  }
-  .top-nav .nav-links {
-    display: flex;
-    gap: 1.5rem;
-    font-size: 0.85rem;
-  }
-  .top-nav .nav-links a { color: #888; }
-  .top-nav .nav-links a:hover { color: #fff; text-decoration: none; }
-  .top-nav .nav-links a.active {
-    color: #00E5FF;
-    font-weight: 600;
-    border-bottom: 2px solid #00E5FF;
-    padding-bottom: 0.2rem;
-  }
-
-  /* ── Hero ── */
-  .hero {
-    text-align: center;
-    padding: 3rem 1.5rem 1.5rem;
-  }
-
-  .hero h1 {
-    font-weight: 800;
-    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-    color: #00E5FF;
-    letter-spacing: -0.01em;
-    margin-bottom: 0.6rem;
-  }
-
-  .hero p {
-    color: #999;
-    font-size: clamp(0.95rem, 2.2vw, 1.1rem);
-    max-width: 640px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-
-  /* ── Layout ── */
-  .container {
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem 4rem;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
-
-  @media (max-width: 800px) {
-    .grid { grid-template-columns: 1fr; }
-  }
-
-  /* ── Card ── */
-  .card {
-    background: #111;
-    border: 1px solid #1a1a1a;
-    border-radius: 10px;
-    padding: 2rem 1.75rem;
-  }
-
-  .card h2 {
-    font-weight: 800;
-    font-size: 0.85rem;
-    color: #00E5FF;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 1.5rem;
-  }
-
-  /* ── Form ── */
-  .form-group { margin-bottom: 1.5rem; }
-
-  label {
-    display: block;
-    color: #999;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 0.5rem;
-  }
-
-  /* Product picker as tile-style radio */
-  .picker {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-  }
-  .picker input[type="radio"] {
-    position: absolute; opacity: 0; pointer-events: none;
-  }
-  .picker label.tile {
-    display: block;
-    padding: 1rem 1rem;
-    background: #181818;
-    border: 1px solid #2a2a2a;
-    border-radius: 6px;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.15s;
-    text-transform: none;
-    letter-spacing: normal;
-  }
-  .picker label.tile:hover {
-    border-color: #444;
-  }
-  .picker input[type="radio"]:checked + label.tile {
-    background: rgba(0, 229, 255, 0.08);
-    border-color: #00E5FF;
-    color: #00E5FF;
-  }
-  .tile-title {
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: inherit;
-    margin-bottom: 0.2rem;
-  }
-  .tile-meta {
-    font-size: 0.72rem;
-    color: #666;
-  }
-  .picker input[type="radio"]:checked + label.tile .tile-meta {
-    color: #00E5FF;
-    opacity: 0.85;
-  }
-
-  /* Solver toggle */
-  .solver-toggle {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
-  }
-  .solver-toggle button {
-    background: #181818;
-    border: 1px solid #2a2a2a;
-    color: #ccc;
-    padding: 0.6rem;
-    border-radius: 6px;
-    font-family: inherit;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .solver-toggle button:hover { border-color: #444; }
-  .solver-toggle button.active {
-    background: rgba(0, 229, 255, 0.08);
-    border-color: #00E5FF;
-    color: #00E5FF;
-  }
-  .solver-toggle button:disabled {
-    opacity: 0.35;
-    cursor: not-allowed;
-  }
-  .solver-note {
-    font-size: 0.75rem;
-    color: #666;
-    margin-top: 0.6rem;
-    line-height: 1.4;
-  }
-
-  /* Speed slider */
-  .slider-wrap {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 0.4rem;
-  }
-  input[type="range"] {
-    flex: 1;
-    -webkit-appearance: none;
-    appearance: none;
-    height: 4px;
-    background: #1a1a1a;
-    border-radius: 2px;
-    outline: none;
-    cursor: pointer;
-  }
-  input[type="range"]:focus-visible {
-    box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.25);
-  }
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 18px;
-    height: 18px;
-    background: #00E5FF;
-    border-radius: 50%;
-    cursor: pointer;
-    border: 0;
-    box-shadow: 0 0 0 4px rgba(0, 229, 255, 0.15);
-  }
-  input[type="range"]::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
-    background: #00E5FF;
-    border-radius: 50%;
-    cursor: pointer;
-    border: 0;
-    box-shadow: 0 0 0 4px rgba(0, 229, 255, 0.15);
-  }
-  .speed-value {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-weight: 600;
-    color: #00E5FF;
-    min-width: 5.5em;
-    text-align: right;
-    font-size: 0.95rem;
-  }
-  .speed-value .unit { color: #666; font-weight: 400; font-size: 0.8em; margin-left: 0.2em; }
-  .speed-kmh { display: none; }  /* km/h moved inline with m/s value */
-  .speed-range {
-    display: flex;
-    justify-content: space-between;
-    color: #555;
-    font-size: 0.7rem;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    margin-top: 0.4rem;
-  }
-  .runtime-hint {
-    text-align: center;
-    color: #777;
-    font-size: 0.78rem;
-    margin-top: 0.6rem;
-  }
-  .runtime-hint strong { color: #00E5FF; }
-
-  /* Run button */
-  .btn-run {
-    width: 100%;
-    padding: 0.85rem;
-    background: #00E5FF;
-    color: #0A0A0A;
-    border: 0;
-    border-radius: 6px;
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 0.95rem;
-    letter-spacing: 0.02em;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .btn-run:hover { background: #00c8e0; transform: translateY(-1px); }
-  .btn-run:active { transform: translateY(0); }
-  .btn-run:disabled {
-    background: #333;
-    color: #666;
-    cursor: not-allowed;
-    transform: none;
-  }
-
-  /* Result panel */
-  .result-empty {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
-    color: #444;
-    text-align: left;
-    font-size: 0.85rem;
   }
-  .result-empty .skeleton-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-    margin-top: 0.4rem;
-    opacity: 0.55;
-  }
-  .result-empty .skeleton-kpi {
-    background: #161616;
-    border: 1px dashed #1f1f1f;
-    border-radius: 6px;
-    padding: 0.85rem 1rem;
-  }
-  .result-empty .skeleton-kpi .kpi-label { color: #555; }
-  .result-empty .skeleton-kpi .kpi-value {
-    color: #2c2c2c;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 1.3rem;
-    font-weight: 700;
-  }
-  .result-empty .empty-hint {
-    color: #555;
-    font-size: 0.78rem;
-    margin-top: 0.4rem;
-    line-height: 1.5;
-  }
-
-  .result-status {
+  main {
+    flex: 1;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 0.6rem;
-    color: #888;
-    font-size: 0.85rem;
-    margin-bottom: 1.25rem;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 1.5rem 3rem;
   }
-  .spinner {
-    width: 14px;
-    height: 14px;
-    border: 2px solid #2a2a2a;
-    border-top-color: #00E5FF;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
+  .logo {
+    width: 320px;
+    max-width: 75vw;
+    height: auto;
+    margin-bottom: 2rem;
   }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
   .badge {
     display: inline-block;
-    padding: 0.15rem 0.55rem;
-    border-radius: 999px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-  }
-  .badge-cached  { background: rgba(0, 229, 255, 0.15); color: #00E5FF; }
-  .badge-fresh   { background: #2a2a2a; color: #888; }
-  .badge-pass    { background: rgba(0, 220, 130, 0.15); color: #00DC82; }
-  .badge-fail    { background: rgba(255, 80, 80, 0.15); color: #FF6B6B; }
-  .badge-warn    { background: rgba(255, 180, 0, 0.15); color: #FFB400; }
-
-  .kpi-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-    margin: 1rem 0 1.25rem;
-  }
-  @media (max-width: 480px) { .kpi-list { grid-template-columns: 1fr; } }
-  .kpi {
-    background: #181818;
-    border-radius: 6px;
-    padding: 0.85rem 1rem;
-    border: 1px solid #1a1a1a;
-  }
-  .kpi-label {
-    color: #777;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 0.2rem;
-  }
-  .kpi-value {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #fff;
-  }
-
-  .gates-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    margin-bottom: 1.25rem;
-  }
-  .gate-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #181818;
-    border: 1px solid #1a1a1a;
-    border-radius: 6px;
-    padding: 0.55rem 0.85rem;
-    font-size: 0.83rem;
-  }
-  .gate-id { color: #ccc; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; }
-
-  .meta-row {
-    color: #666;
-    font-size: 0.75rem;
-    line-height: 1.6;
-    border-top: 1px solid #1a1a1a;
-    padding-top: 0.9rem;
-    margin-top: 1rem;
-  }
-  .meta-row code {
-    background: #181818;
-    padding: 0.05em 0.35em;
-    border-radius: 3px;
-    color: #00E5FF;
-    font-size: 0.85em;
-  }
-
-  .download-btn {
-    display: inline-block;
-    margin-top: 0.6rem;
-    padding: 0.55rem 1.1rem;
-    background: transparent;
     color: #00E5FF;
     border: 1px solid #00E5FF;
-    border-radius: 6px;
+    border-radius: 999px;
+    padding: 0.3rem 0.9rem;
+    font-size: 0.72rem;
     font-weight: 600;
-    font-size: 0.85rem;
-    transition: all 0.15s;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
   }
-  .download-btn:hover {
-    background: rgba(0, 229, 255, 0.1);
-    text-decoration: none;
+  h1 {
+    font-weight: 800;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: #FFF;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    max-width: 640px;
   }
-
-  .error-box {
-    background: rgba(255, 80, 80, 0.08);
-    border: 1px solid rgba(255, 80, 80, 0.3);
+  .lede {
+    color: #999;
+    font-size: clamp(1rem, 2.2vw, 1.1rem);
+    line-height: 1.7;
+    max-width: 540px;
+    margin-bottom: 2.5rem;
+  }
+  .actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.8rem;
     border-radius: 6px;
-    padding: 0.9rem 1rem;
-    color: #FF8888;
-    font-size: 0.85rem;
-    line-height: 1.5;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    letter-spacing: 0.01em;
+    border: 1px solid #00E5FF;
   }
-
+  .btn-primary {
+    background: #00E5FF;
+    color: #0A0A0A;
+  }
+  .btn-primary:hover {
+    background: #00c8e0;
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: #00E5FF;
+  }
+  .btn-secondary:hover {
+    background: rgba(0, 229, 255, 0.1);
+    transform: translateY(-1px);
+  }
   footer {
     text-align: center;
     padding: 2rem 1.5rem;
     border-top: 1px solid #111;
-    color: #333;
-    font-size: 0.75rem;
   }
-  footer code { color: #00E5FF; }
-
-  .hidden { display: none !important; }
+  footer p {
+    color: #444;
+    font-size: 0.78rem;
+    margin-bottom: 0.5rem;
+  }
+  footer a {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.78rem;
+    margin: 0 0.5rem;
+  }
+  footer a:hover { color: #00E5FF; }
 </style>
 </head>
 <body>
 
-<nav class="top-nav">
-  <a href="/" class="logo-link">ARXYNE</a>
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/demo/">Demo video</a>
-    <a href="/try/" class="active">Try</a>
-  </div>
-</nav>
+  <main>
+    <img src="https://raw.githubusercontent.com/arxynehq/.github/main/profile/assets/logo.png" alt="Arxyne" class="logo">
+    <span class="badge">Coming soon</span>
+    <h1>The interactive demo is on its way.</h1>
+    <p class="lede">
+      In the meantime, watch the platform run end-to-end on a reference
+      product, or get in touch if you'd like an early look.
+    </p>
+    <div class="actions">
+      <a href="/demo/" class="btn btn-primary">Watch the demo</a>
+      <a href="mailto:chris@arxyne.com" class="btn btn-secondary">Get in touch</a>
+    </div>
+  </main>
 
-<header class="hero">
-  <h1>Try the platform</h1>
-  <p>Pick a product, set the airflow, hit run. Get back real aero KPIs and a downloadable USD digital twin enriched with the simulation results.</p>
-</header>
-
-<main class="container">
-  <div class="grid">
-
-    <!-- ── Inputs ── -->
-    <section class="card" id="input-card">
-      <h2>1. Configure assessment</h2>
-
-      <div class="form-group">
-        <label>Product</label>
-        <div class="picker" id="product-picker">
-          <input type="radio" name="product" value="drivaer" id="p-drivaer" checked>
-          <label class="tile" for="p-drivaer">
-            <div class="tile-title">DrivAer Sedan</div>
-            <div class="tile-meta">Cd · Cl · CmPitch</div>
-          </label>
-
-          <input type="radio" name="product" value="onera-m6" id="p-onera">
-          <label class="tile" for="p-onera">
-            <div class="tile-title">ONERA M6 Wing</div>
-            <div class="tile-meta">Cd · Cl</div>
-          </label>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Solver</label>
-        <div class="solver-toggle" id="solver-toggle">
-          <button type="button" data-solver="domino" class="active">
-            AI surrogate
-            <div class="tile-meta" style="margin-top:0.2rem;font-size:0.7rem;">DoMINO · ~30 s</div>
-          </button>
-          <button type="button" data-solver="openfoam">
-            Full physics
-            <div class="tile-meta" style="margin-top:0.2rem;font-size:0.7rem;">OpenFOAM · 10–30 min</div>
-          </button>
-        </div>
-        <div class="solver-note" id="solver-note">
-          The AI surrogate gives a near-instant answer trained on the same physics. Pick Full Physics for ground-truth CFD.
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label id="speed-label">Inlet airspeed</label>
-        <div class="slider-wrap">
-          <input type="range" id="speed-slider" min="15" max="80" step="0.5" value="27.78">
-          <div class="speed-value">
-            <span id="speed-display">27.8</span><span class="unit"> m/s</span>
-            <span class="unit" style="display:block; font-size:0.7em; color:#666; margin-top:0.1em;"><span id="speed-kmh-inline">100</span> km/h</span>
-          </div>
-        </div>
-        <div class="speed-range">
-          <span id="speed-min">15 m/s</span>
-          <span id="speed-max">80 m/s</span>
-        </div>
-      </div>
-
-      <button class="btn-run" id="run-btn">Run assessment</button>
-    </section>
-
-    <!-- ── Results ── -->
-    <section class="card" id="result-card">
-      <h2>2. Results</h2>
-
-      <div id="result-empty" class="result-empty">
-        <div class="skeleton-grid" id="skeleton-grid">
-          <div class="skeleton-kpi"><div class="kpi-label">Cd</div><div class="kpi-value">———</div></div>
-          <div class="skeleton-kpi"><div class="kpi-label">Cl</div><div class="kpi-value">———</div></div>
-          <div class="skeleton-kpi"><div class="kpi-label">CmPitch</div><div class="kpi-value">———</div></div>
-          <div class="skeleton-kpi"><div class="kpi-label">Wall time</div><div class="kpi-value">———</div></div>
-        </div>
-        <div class="empty-hint">Configure on the left and hit <strong style="color:#999;">Run assessment</strong>. You'll get back KPIs, gate pass/fail status, and a downloadable USD digital twin enriched with the simulation results.</div>
-      </div>
-
-      <div id="result-active" class="hidden">
-        <div class="result-status" id="result-status"></div>
-
-        <div id="result-kpis-wrap" class="hidden">
-          <div class="kpi-list" id="kpi-list"></div>
-          <div id="gates-wrap" class="hidden">
-            <label style="margin-bottom:0.6rem;">Gates</label>
-            <div class="gates-list" id="gates-list"></div>
-          </div>
-          <a id="download-link" class="download-btn hidden" download>Download enriched USD</a>
-          <div class="meta-row" id="meta-row"></div>
-        </div>
-
-        <div id="result-error" class="error-box hidden"></div>
-      </div>
-    </section>
-
-  </div>
-</main>
-
-<footer>
-  <p>© Arxyne Ltd · API: <code>[REDACTED-BACKEND-HOST]</code></p>
-  <p style="margin-top:0.5rem;">
-    <a href="/privacy/" style="color:#666;text-decoration:none;margin:0 0.5rem;font-size:0.78rem;">Privacy</a> ·
-    <a href="/cookies/" style="color:#666;text-decoration:none;margin:0 0.5rem;font-size:0.78rem;">Cookies</a> ·
-    <a href="#" data-action="open-consent" style="color:#666;text-decoration:none;margin:0 0.5rem;font-size:0.78rem;">Cookie settings</a>
-  </p>
-</footer>
-
-<script>
-(() => {
-  // ── Config ────────────────────────────────────────────────────────────────
-  // API base URL. Default: same origin via Cloudflare tunnel mapping
-  // [REDACTED-BACKEND-COMMENT]. Override for local dev:
-  //   localStorage.setItem('arxyne_api_base', 'http://localhost:8000')
-  const API_BASE =
-    localStorage.getItem('arxyne_api_base')
-    || 'https://[REDACTED-BACKEND-HOST]';
-
-  // ── State ─────────────────────────────────────────────────────────────────
-  let templates = null;
-  let currentRunId = null;
-  let pollTimer = null;
-  let abortPolling = false;
-
-  // ── DOM refs ──────────────────────────────────────────────────────────────
-  const $ = (sel) => document.querySelector(sel);
-  const $$ = (sel) => Array.from(document.querySelectorAll(sel));
-
-  const productInputs = $$('input[name="product"]');
-  const solverButtons = $$('#solver-toggle button');
-  const solverNote = $('#solver-note');
-  const speedSlider = $('#speed-slider');
-  const speedDisplay = $('#speed-display');
-
-  const speedLabel = $('#speed-label');
-  const runBtn = $('#run-btn');
-  const resultEmpty = $('#result-empty');
-  const resultActive = $('#result-active');
-  const resultStatus = $('#result-status');
-  const resultKpisWrap = $('#result-kpis-wrap');
-  const kpiList = $('#kpi-list');
-  const gatesWrap = $('#gates-wrap');
-  const gatesList = $('#gates-list');
-  const downloadLink = $('#download-link');
-  const metaRow = $('#meta-row');
-  const resultError = $('#result-error');
-
-  // ── Init ──────────────────────────────────────────────────────────────────
-  init();
-
-  async function init() {
-    try {
-      const r = await fetch(`${API_BASE}[REDACTED-ENDPOINT]`);
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      templates = await r.json();
-    } catch (e) {
-      console.warn('Failed to load templates:', e);
-      // Fallback to hard-coded so the UI still works for inspection
-      templates = {
-        'drivaer':  { kpis: ['Cd','Cl','CmPitch'], solvers: ['openfoam','domino'], speed_range_mps: [15,80],  default_speed_mps: 27.78 },
-        'onera-m6': { kpis: ['Cd','Cl'],            solvers: ['openfoam'],          speed_range_mps: [50,250], default_speed_mps: 247 },
-      };
-    }
-    syncProductChange();
-  }
-
-  // ── Product + solver wiring ──────────────────────────────────────────────
-  productInputs.forEach(r => r.addEventListener('change', syncProductChange));
-  solverButtons.forEach(b => b.addEventListener('click', () => selectSolver(b.dataset.solver)));
-  speedSlider.addEventListener('input', updateSpeedDisplay);
-
-  function getProduct() { return $('input[name="product"]:checked').value; }
-
-  function selectedSolver() {
-    const btn = solverButtons.find(b => b.classList.contains('active') && !b.disabled);
-    return btn ? btn.dataset.solver : null;
-  }
-
-  function selectSolver(name) {
-    solverButtons.forEach(b => b.classList.toggle('active', b.dataset.solver === name && !b.disabled));
-    updateSolverNote();
-    updateRuntimeHint();
-  }
-
-  function syncProductChange() {
-    if (!templates) return;
-    const tpl = templates[getProduct()];
-
-    // Solver buttons — disable any not supported for this product
-    solverButtons.forEach(b => {
-      const supported = tpl.solvers.includes(b.dataset.solver);
-      b.disabled = !supported;
-      if (!supported) b.classList.remove('active');
-    });
-    // Make sure something's active
-    if (!solverButtons.some(b => b.classList.contains('active'))) {
-      const fallback = tpl.solvers.includes('domino') ? 'domino' : tpl.solvers[0];
-      selectSolver(fallback);
-    }
-    updateSolverNote();
-
-    // Speed slider — update range to match product
-    const [lo, hi] = tpl.speed_range_mps;
-    speedSlider.min = lo;
-    speedSlider.max = hi;
-    speedSlider.step = lo < 60 ? 0.5 : 5;
-    speedSlider.value = tpl.default_speed_mps;
-    speedLabel.textContent =
-      getProduct() === 'onera-m6' ? 'Freestream airspeed' : 'Inlet airspeed';
-    document.getElementById('speed-min').textContent = `${lo} m/s`;
-    document.getElementById('speed-max').textContent = `${hi} m/s`;
-    updateSpeedDisplay();
-    updateRuntimeHint();
-  }
-
-  function updateRuntimeHint() {
-    // Single source of truth for runtime estimate: the per-button meta.
-    // No separate hint line below the button — reduces duplication.
-  }
-
-  function updateSolverNote() {
-    const sel = selectedSolver();
-    if (sel === 'openfoam') {
-      solverNote.innerHTML =
-        '<strong style="color:#FFB400;">Heads up:</strong> Full Physics runs real CFD — first run for a given configuration takes 10–30 minutes. Subsequent identical runs serve from cache instantly.';
-    } else if (sel === 'domino') {
-      solverNote.innerHTML =
-        'The AI surrogate gives a near-instant answer trained on the same physics. Pick Full Physics for ground-truth CFD.';
-    } else {
-      solverNote.textContent = '';
-    }
-  }
-
-  function updateSpeedDisplay() {
-    const v = parseFloat(speedSlider.value);
-    speedDisplay.textContent = v.toFixed(1);
-    const kmh = document.getElementById('speed-kmh-inline');
-    if (kmh) kmh.textContent = Math.round(v * 3.6);
-  }
-
-  // ── Run ──────────────────────────────────────────────────────────────────
-  runBtn.addEventListener('click', runAssessment);
-
-  async function runAssessment() {
-    if (currentRunId) return; // prevent double-fire
-    abortPolling = false;
-
-    const payload = {
-      product: getProduct(),
-      solver: selectedSolver(),
-      speed_mps: parseFloat(speedSlider.value),
-    };
-
-    runBtn.disabled = true;
-    runBtn.textContent = 'Submitting…';
-    showActive();
-    resultStatus.innerHTML = '<div class="spinner"></div><span>Submitting assessment…</span>';
-    resultKpisWrap.classList.add('hidden');
-    resultError.classList.add('hidden');
-
-    try {
-      const r = await fetch(`${API_BASE}[REDACTED-ENDPOINT]`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(payload),
-      });
-      const body = await r.json();
-      if (!r.ok) {
-        showError(body.detail || `HTTP ${r.status}`);
-        return;
-      }
-      currentRunId = body.run_id;
-      const expectedSeconds =
-        payload.solver === 'domino' ? 30
-        : (body.cached ? 0 : 60 * 18); // 18 min mid estimate for OpenFOAM
-      pollUntilDone(body.run_id, expectedSeconds);
-    } catch (e) {
-      showError(`Network error: ${e.message}. Is the backend reachable at ${API_BASE}?`);
-    }
-  }
-
-  async function pollUntilDone(runId, expectedSeconds) {
-    const startedAt = Date.now();
-    const productLabel = templates[getProduct()].kpis ? getProduct() : 'product';
-
-    function statusBar(elapsed) {
-      const elapsedStr = formatElapsed(elapsed);
-      const expStr = expectedSeconds > 60 ? `~${Math.round(expectedSeconds/60)} min` : `~${expectedSeconds}s`;
-      return `<div class="spinner"></div><span>Running ${productLabel}… ${elapsedStr} elapsed (${expStr} expected)</span>`;
-    }
-
-    const tick = async () => {
-      if (abortPolling) return;
-      const elapsed = (Date.now() - startedAt) / 1000;
-      try {
-        const r = await fetch(`${API_BASE}[REDACTED-ENDPOINT]/${runId}`);
-        if (!r.ok) {
-          if (r.status === 404) {
-            // Backend lost the run (restart, etc.) — surface and stop
-            showError('Run lost (backend may have restarted). Try again.');
-            stopPolling();
-            return;
-          }
-          throw new Error(`HTTP ${r.status}`);
-        }
-        const body = await r.json();
-        if (body.status === 'done') {
-          renderDone(body);
-          stopPolling();
-          return;
-        }
-        if (body.status === 'failed') {
-          showError(body.error || 'Assessment failed.');
-          stopPolling();
-          return;
-        }
-        resultStatus.innerHTML = statusBar(elapsed);
-      } catch (e) {
-        // Transient network errors — keep trying for a bit
-        console.warn('poll error', e);
-      }
-      pollTimer = setTimeout(tick, 1500);
-    };
-    tick();
-  }
-
-  function stopPolling() {
-    abortPolling = true;
-    if (pollTimer) clearTimeout(pollTimer);
-    pollTimer = null;
-    currentRunId = null;
-    runBtn.disabled = false;
-    runBtn.textContent = 'Run assessment';
-  }
-
-  function renderDone(body) {
-    const kpis = body.kpis || {};
-    const gates = body.gates || {};
-
-    // Status bar
-    const cachedBadge = body.cached
-      ? '<span class="badge badge-cached">cached</span>'
-      : '<span class="badge badge-fresh">fresh run</span>';
-    const elapsed = body.elapsed_s != null
-      ? formatElapsed(body.elapsed_s)
-      : '—';
-    resultStatus.innerHTML = `
-      <span style="color:#00DC82;">✓</span>
-      <span>Done in ${elapsed}</span>
-      ${cachedBadge}
-    `;
-
-    // KPI cards
-    kpiList.innerHTML = '';
-    const order = ['cd', 'cl', 'cm_pitch'];
-    const labels = { cd: 'Cd', cl: 'Cl', cm_pitch: 'CmPitch' };
-    let renderedAny = false;
-    for (const k of order) {
-      if (k in kpis) {
-        const v = kpis[k];
-        const formatted = (typeof v === 'number') ? v.toFixed(3) : String(v);
-        kpiList.innerHTML += `
-          <div class="kpi">
-            <div class="kpi-label">${labels[k]}</div>
-            <div class="kpi-value">${formatted}</div>
-          </div>`;
-        renderedAny = true;
-      }
-    }
-    if (!renderedAny) {
-      kpiList.innerHTML = '<div class="kpi"><div class="kpi-label">KPIs</div><div class="kpi-value">—</div></div>';
-    }
-
-    // Gates
-    const gateRows = [];
-    for (const [domain, gateList] of Object.entries(gates)) {
-      if (!Array.isArray(gateList)) continue;
-      for (const g of gateList) {
-        const status = (g.status || '').toLowerCase();
-        const cls = status === 'pass' ? 'badge-pass'
-                  : status === 'fail' ? 'badge-fail'
-                  : 'badge-warn';
-        gateRows.push(`
-          <div class="gate-row">
-            <span class="gate-id">${g.id || domain}</span>
-            <span class="badge ${cls}">${g.status || 'n/a'}</span>
-          </div>`);
-      }
-    }
-    if (gateRows.length) {
-      gatesWrap.classList.remove('hidden');
-      gatesList.innerHTML = gateRows.join('');
-    } else {
-      gatesWrap.classList.add('hidden');
-    }
-
-    // Download link
-    if (body.download_url) {
-      downloadLink.href = `${API_BASE}${body.download_url}`;
-      downloadLink.classList.remove('hidden');
-    } else {
-      downloadLink.classList.add('hidden');
-    }
-
-    // Meta row
-    const lines = [];
-    lines.push(`<code>${body.product}</code> · <code>${body.solver}</code>`);
-    if (body.actual_speed_mps != null && Math.abs(body.actual_speed_mps - body.speed_mps) > 0.01) {
-      lines.push(`requested <code>${body.speed_mps.toFixed(1)} m/s</code>, ran at <code>${body.actual_speed_mps.toFixed(1)} m/s</code> (snapped to bucket)`);
-    } else {
-      lines.push(`speed <code>${body.speed_mps.toFixed(1)} m/s</code>`);
-    }
-    if (body.cached) {
-      lines.push('this run was served from cache — first user with this configuration triggered the real solver run.');
-    } else {
-      lines.push('this run computed fresh and is now cached for the next user with the same configuration.');
-    }
-    metaRow.innerHTML = lines.join(' · ');
-
-    resultKpisWrap.classList.remove('hidden');
-    resultError.classList.add('hidden');
-  }
-
-  function showError(msg) {
-    showActive();
-    resultStatus.innerHTML = '<span style="color:#FF6B6B;">✗</span><span>Failed</span>';
-    resultError.textContent = msg;
-    resultError.classList.remove('hidden');
-    resultKpisWrap.classList.add('hidden');
-    stopPolling();
-  }
-
-  function showActive() {
-    resultEmpty.classList.add('hidden');
-    resultActive.classList.remove('hidden');
-  }
-
-  function formatElapsed(s) {
-    if (s < 60) return `${s.toFixed(0)}s`;
-    const m = Math.floor(s / 60);
-    const rem = Math.floor(s % 60);
-    return `${m}m ${rem.toString().padStart(2,'0')}s`;
-  }
-})();
-</script>
+  <footer>
+    <p>© 2026 Arxyne Ltd</p>
+    <p>
+      <a href="/privacy/">Privacy</a> ·
+      <a href="/cookies/">Cookies</a> ·
+      <a href="#" data-action="open-consent">Cookie settings</a>
+    </p>
+  </footer>
 
 </body>
 </html>
