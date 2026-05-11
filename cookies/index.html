@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Policy — Arxyne</title>
+<meta name="description" content="What cookies arxyne.com sets and how to control them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0A0A0A; color: #ddd;
+    font-family: 'Inter', sans-serif; font-weight: 400;
+    min-height: 100vh; line-height: 1.7;
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+  .top-nav {
+    padding: 1.5rem; max-width: 1000px; margin: 0 auto;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .top-nav a {
+    color: #00E5FF; text-decoration: none; font-weight: 600; font-size: 0.9rem;
+  }
+  .top-nav a:hover { text-decoration: underline; }
+  h1 {
+    font-weight: 800; font-size: clamp(1.6rem, 4vw, 2.2rem);
+    color: #00E5FF; letter-spacing: -0.02em; margin-bottom: 0.5rem;
+  }
+  .updated { color: #555; font-size: 0.85rem; margin-bottom: 2.5rem; }
+  h2 {
+    font-weight: 800; font-size: 1.15rem; color: #fff;
+    margin: 2rem 0 0.75rem; letter-spacing: -0.01em;
+  }
+  p { color: #bbb; font-size: 0.95rem; margin-bottom: 1rem; }
+  ul { color: #bbb; font-size: 0.95rem; margin: 0 0 1rem 1.5rem; }
+  li { margin-bottom: 0.4rem; }
+  a { color: #00E5FF; }
+  code {
+    background: #111; padding: 0.1rem 0.35rem; border-radius: 3px;
+    font-size: 0.85em; color: #00E5FF;
+  }
+  table {
+    width: 100%; border-collapse: collapse; margin: 1rem 0 2rem;
+    font-size: 0.9rem;
+  }
+  th, td {
+    text-align: left; padding: 0.7rem 0.75rem;
+    border-bottom: 1px solid #1a1a1a; vertical-align: top;
+  }
+  th {
+    color: #00E5FF; font-weight: 600; font-size: 0.82rem;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  td { color: #bbb; }
+  td code { font-size: 0.85rem; }
+  .btn-row {
+    display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 1.5rem 0;
+  }
+  .btn {
+    display: inline-block; padding: 0.55rem 1.2rem; border-radius: 6px;
+    font-family: inherit; font-weight: 600; font-size: 0.9rem;
+    cursor: pointer; text-decoration: none; border: 1px solid #00E5FF;
+  }
+  .btn-primary { background: #00E5FF; color: #0A0A0A; border-color: #00E5FF; }
+  .btn-secondary { background: transparent; color: #00E5FF; }
+  footer {
+    text-align: center; padding: 2rem 1.5rem; border-top: 1px solid #111;
+    margin-top: 3rem;
+  }
+  footer p { color: #444; font-size: 0.78rem; margin-bottom: 0.5rem; }
+  footer a {
+    color: #666; text-decoration: none; font-size: 0.78rem;
+    margin: 0 0.5rem;
+  }
+  footer a:hover { color: #00E5FF; }
+</style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a href="/">← Back to arxyne.com</a>
+  </nav>
+
+  <div class="container">
+    <h1>Cookie Policy</h1>
+    <p class="updated">Last updated: 11 May 2026</p>
+
+    <p>This page explains every cookie that <strong>arxyne.com</strong> may
+    set, why, how long it lasts, and how to turn it on or off. It sits
+    alongside our <a href="/privacy/">privacy policy</a>, which covers
+    what we do with the data those cookies feed.</p>
+
+    <h2>The short version</h2>
+    <p>We use one set of cookies, and only if you allow it: Google Analytics
+    for understanding which pages people read. Until you click
+    <em>Accept analytics</em> on the banner, <strong>no analytics cookies are
+    set</strong> and no Google scripts run. You can change your mind at any
+    time using the buttons below or the <em>Cookie settings</em> link in
+    the footer.</p>
+
+    <div class="btn-row">
+      <button type="button" class="btn btn-primary" data-action="open-consent">Change cookie settings</button>
+      <a href="/privacy/" class="btn btn-secondary">Privacy policy</a>
+    </div>
+
+    <h2>Cookies we may set</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Purpose</th>
+          <th>Provider</th>
+          <th>Lifetime</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>_ga</code></td>
+          <td>Distinguishes unique users (Google Analytics 4).</td>
+          <td>Google LLC</td>
+          <td>13 months</td>
+          <td>Analytics — opt-in</td>
+        </tr>
+        <tr>
+          <td><code>_ga_L2KSD72508</code></td>
+          <td>Maintains session state for the GA4 property.</td>
+          <td>Google LLC</td>
+          <td>13 months</td>
+          <td>Analytics — opt-in</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>How we remember your choice</h2>
+    <p>Your consent decision itself is stored in your browser's
+    <code>localStorage</code> under the key
+    <code>arxyne_consent_v1</code>. This is not a cookie — it stays on
+    your device and is never sent to a server. Clear it (browser
+    settings → site data for arxyne.com) and the banner reappears next
+    visit.</p>
+
+    <h2>What happens if you reject</h2>
+    <p>The Google Analytics script is never loaded, no <code>_ga*</code>
+    cookies are set, and your visit is invisible to us beyond the
+    short-lived server logs our hosting provider keeps for security.
+    The site works exactly the same.</p>
+
+    <h2>Strictly necessary?</h2>
+    <p>Arxyne.com sets no strictly-necessary cookies of its own.
+    Third-party assets (the Inter web font from Google Fonts and the
+    logo/architecture SVGs from GitHub) do not set cookies in the
+    browser, though those providers may log the request server-side.</p>
+
+    <h2>Changes</h2>
+    <p>If we add a new category of cookie, we will update this page and
+    re-prompt for consent before anything new is set.</p>
+  </div>
+
+  <footer>
+    <p>© 2026 Arxyne Ltd</p>
+    <p>
+      <a href="/privacy/">Privacy</a> ·
+      <a href="/cookies/">Cookies</a> ·
+      <a href="#" data-action="open-consent">Cookie settings</a>
+    </p>
+  </footer>
+
+  <script src="/assets/consent.js" defer></script>
+</body>
+</html>
