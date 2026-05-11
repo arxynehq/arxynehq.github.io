@@ -1,0 +1,51 @@
+name: IP leak check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Block IP-leak strings
+        run: |
+          # Strings that must never appear in the public site source.
+          # Keep this list in sync with NOTICE.md.
+          PATTERNS=(
+            'api\.arxyne\.com'
+            '/api/templates'
+            '/api/assess'
+            '/api/results'
+            'Spark backend'
+          )
+
+          fail=0
+          for p in "${PATTERNS[@]}"; do
+            # Search HTML, JS, CSS, MD, YAML — anything user-facing.
+            # Exclude .git and NOTICE.md (which legitimately documents the redaction).
+            hits=$(grep -rEn "$p" \
+              --include='*.html' --include='*.js' --include='*.css' \
+              --include='*.md' --include='*.yml' --include='*.yaml' \
+              --exclude='NOTICE.md' \
+              . 2>/dev/null || true)
+            if [ -n "$hits" ]; then
+              echo "::error::IP leak detected — pattern '$p' found:"
+              echo "$hits"
+              fail=1
+            fi
+          done
+
+          if [ "$fail" -eq 1 ]; then
+            echo ""
+            echo "These strings were redacted from history on 2026-05-11 (W.4)."
+            echo "If you genuinely need to reintroduce one, update this workflow"
+            echo "first and document the rationale in NOTICE.md."
+            exit 1
+          fi
+
+          echo "✓ no IP-leak patterns found"
