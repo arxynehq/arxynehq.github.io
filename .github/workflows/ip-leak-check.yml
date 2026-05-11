@@ -32,6 +32,7 @@ jobs:
               --include='*.html' --include='*.js' --include='*.css' \
               --include='*.md' --include='*.yml' --include='*.yaml' \
               --exclude='NOTICE.md' \
+              --exclude='ip-leak-check.yml' \
               . 2>/dev/null || true)
             if [ -n "$hits" ]; then
               echo "::error::IP leak detected — pattern '$p' found:"
